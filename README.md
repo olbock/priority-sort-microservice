@@ -89,17 +89,25 @@ sequenceDiagram
     participant Res as priority_response.txt
 
     Main->>Req: Write priority sort request
+
     loop Microservice checks request folder
         MS->>Req: readPriorityRequest()
     end
+
     MS->>MS: sortItemsByPriority()
+
     alt Priorities provided
         MS->>Res: writeSortedItems()
     else Missing priority values
         MS->>MS: moveMissingPrioritiesToEnd()
         MS->>Res: writeSortedItems()
     end
+
     loop Program checks response folder
-        Main->>Res: Read sorted priority response
+        Main->>Res: Check for priority response
     end
+
+    Res-->>Main: Return sorted priority data
+
+    Main->>Main: Process sorted results
 ```
