@@ -1,5 +1,0 @@
-sorted_items:
-Biology Exam, priority=5
-Math Homework, priority=3
-Discussion Post, priority=1
-Extra Credit Worksheet, priority=missing
